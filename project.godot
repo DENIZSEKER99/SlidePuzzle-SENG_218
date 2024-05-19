@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="SlidePuzzle"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=414
+window/size/viewport_height=896
 
 [dotnet]
 
