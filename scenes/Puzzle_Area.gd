@@ -3,6 +3,7 @@ extends Area2D
 var tiles = []
 var solved = []
 var mouse = false
+@export var hardness =25
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +12,19 @@ func _ready():
 func start_game():
 	tiles = [$Tile1, $Tile2, $Tile3, $Tile4, $Tile5, $Tile6, $Tile7, $Tile8, $Tile9, $Tile10, $Tile11, $Tile12, $Tile13, $Tile14, $Tile15, $Tile16 ]
 	solved = tiles.duplicate()
+	shuffle_tiles()
 
+func shuffle_tiles():
+	var previous = 99
+	var previous_1 = 98
+	for t in range(0,hardness):
+		var tile = randi() % 16
+		if tiles[tile] != $Tile16 and tile != previous and tile != previous_1:
+			var rows = int(tiles[tile].position.y / 250)
+			var cols = int(tiles[tile].position.x / 250)
+			check_neighbours(rows,cols)
+			previous_1 = previous
+			previous = tile
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
