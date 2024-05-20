@@ -5,7 +5,7 @@ var tiles = []
 var solved = []
 var mouse = false
 
-var hardness = 0
+var hardness = 500
 
 func _ready():
 	start_game()
@@ -13,7 +13,7 @@ func _ready():
 func start_game():
 	tiles = [$Tile1, $Tile2, $Tile3, $Tile4, $Tile5, $Tile6, $Tile7, $Tile8, $Tile9, $Tile10, $Tile11, $Tile12, $Tile13, $Tile14, $Tile15, $Tile16 ]
 	solved = tiles.duplicate()
-	#shuffle_tiles()
+	shuffle_tiles()
 
 func shuffle_tiles():
 	var previous = 99
@@ -85,3 +85,8 @@ func swap_tiles(tile_src, tile_dst):
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		mouse = event
+
+
+func _on_button_button_down():
+	shuffle_tiles()
+	pass # Replace with function body.

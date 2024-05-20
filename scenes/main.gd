@@ -1,18 +1,11 @@
 extends Node
 class_name main
 
-const hardness :int = 1
+const hardness :int = 500
 
 var sonic_is_active = false
 
 var puzzle_area = preload("res://scenes/Puzzle_Area.tscn")
-
-func _ready():
-	
-	pass
-
-func _process(delta):
-	pass
 
 func _on_sonic_button_down():
 	if sonic_is_active == false:
