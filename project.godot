@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SlidePuzzle"
-run/main_scene="res://scenes/Puzzle_Area.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

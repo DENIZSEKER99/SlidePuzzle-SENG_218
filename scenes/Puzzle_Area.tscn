@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://d3qyn3n128j1b"]
 
-[ext_resource type="Script" path="res://scenes/Puzzle_Area.gd" id="1_0uo31"]
+[ext_resource type="Script" path="res://scenes/Puzzle_Area.gd" id="1_amuxp"]
 [ext_resource type="Texture2D" uid="uid://b8uke6ut8f61" path="res://art/numbers/tile1.png" id="1_nhosg"]
 [ext_resource type="Texture2D" uid="uid://cdpnf5gleanqr" path="res://art/numbers/tile2.png" id="2_wv026"]
 [ext_resource type="Texture2D" uid="uid://crjlmayy7afu0" path="res://art/numbers/tile3.png" id="3_ptbai"]
@@ -21,8 +21,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqohr"]
 size = Vector2(1000, 1000)
 
-[node name="Node2D" type="Area2D"]
-script = ExtResource("1_0uo31")
+[node name="Puzzle_Area" type="Area2D"]
+script = ExtResource("1_amuxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(500, 500)

@@ -1,18 +1,19 @@
 extends Area2D
+class_name puzzle_area
 
 var tiles = []
 var solved = []
 var mouse = false
-@export var hardness =25
 
-# Called when the node enters the scene tree for the first time.
+var hardness = 0
+
 func _ready():
 	start_game()
 
 func start_game():
 	tiles = [$Tile1, $Tile2, $Tile3, $Tile4, $Tile5, $Tile6, $Tile7, $Tile8, $Tile9, $Tile10, $Tile11, $Tile12, $Tile13, $Tile14, $Tile15, $Tile16 ]
 	solved = tiles.duplicate()
-	shuffle_tiles()
+	#shuffle_tiles()
 
 func shuffle_tiles():
 	var previous = 99
@@ -26,7 +27,6 @@ func shuffle_tiles():
 			previous_1 = previous
 			previous = tile
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mouse:
 		var mouse_copy = mouse
@@ -44,6 +44,7 @@ func check_neighbours(rows, cols):
 	var pos = rows * 4 + cols
 	while !empty and !done:
 		var new_pos = tiles[pos].position
+		
 		if rows < 3:
 			new_pos.y += 250
 			empty = find_empty(new_pos,pos)
@@ -61,7 +62,7 @@ func check_neighbours(rows, cols):
 			empty = find_empty(new_pos,pos)
 			new_pos.x += 250
 		done = true
-			
+
 func find_empty(position,pos):
 	var new_rows = int(position.y / 250)
 	var new_cols = int(position.x / 250)
@@ -79,8 +80,8 @@ func swap_tiles(tile_src, tile_dst):
 	var temp_tile = tiles[tile_src]
 	tiles[tile_src] = tiles[tile_dst]
 	tiles[tile_dst] = temp_tile
-	
-	
+	print("move sound")
+
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		mouse = event
