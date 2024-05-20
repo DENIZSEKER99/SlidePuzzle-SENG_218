@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqgfwo288nei7"]
-
-[ext_resource type="PackedScene" uid="uid://d3qyn3n128j1b" path="res://scenes/Puzzle_Area.tscn" id="1_m7hya"]
-
-[node name="Menu" type="Node"]
-
-[node name="Node2D" parent="." instance=ExtResource("1_m7hya")]
-position = Vector2(7, 279)
-scale = Vector2(0.4, 0.4)
