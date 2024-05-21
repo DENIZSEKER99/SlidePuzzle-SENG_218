@@ -55,6 +55,9 @@ func _process(delta):
 				$AudioStreamPlayer.play()
 				pass
 			print("You win!")
+			var you_win = preload("res://scenes/You win.tscn")
+			var win_instance = you_win.instantiate()
+			add_child(win_instance)
 
 func check_neighbours(rows, cols):
 	var empty = false
@@ -62,7 +65,6 @@ func check_neighbours(rows, cols):
 	var pos = rows * 4 + cols
 	while !empty and !done:
 		var new_pos = tiles[pos].position
-		
 		if rows < 3:
 			new_pos.y += 250
 			empty = find_empty(new_pos,pos)
@@ -108,12 +110,11 @@ func _input_event(viewport, event, shape_idx):
 
 func _on_shuffle_button_down():
 	shuffle_tiles()
-	pass # Replace with function body.
+	pass
 
 func _on_hard_shuffle_button_down():
 	hard_shuffle_tiles()
-	pass # Replace with function body.
-
+	pass
 
 func _on_sound_button_button_down():
 	if sound_is_on:
@@ -122,5 +123,4 @@ func _on_sound_button_button_down():
 	else:
 		$Sound_Button.icon = preload("res://art/Icons/Sound_on.png")
 		sound_is_on = true
-	
-	pass # Replace with function body.
+	pass
