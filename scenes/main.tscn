@@ -1,17 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://rqaw0elb6s0a"]
+[gd_scene load_steps=4 format=3 uid="uid://rqaw0elb6s0a"]
 
 [ext_resource type="PackedScene" uid="uid://d3qyn3n128j1b" path="res://scenes/Puzzle_Area.tscn" id="1_g12u3"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_slrpe"]
+[ext_resource type="AudioStream" uid="uid://bru3p4ulcofwq" path="res://art/audio/Whip Woosh.mp3" id="3_uvlrg"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_slrpe")
 
 [node name="Sonic" type="Button" parent="."]
 offset_left = 1000.0
+offset_top = 96.0
 offset_right = 1250.0
-offset_bottom = 73.0
+offset_bottom = 169.0
 text = "Numbers"
 
 [node name="Node2D" parent="." instance=ExtResource("1_g12u3")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uvlrg")
+bus = &"SFX"
 
 [connection signal="button_down" from="Sonic" to="." method="_on_sonic_button_down"]

@@ -7,6 +7,7 @@ var sonic_is_active = false
 
 var puzzle_area = preload("res://scenes/Puzzle_Area.tscn")
 
+
 func _on_sonic_button_down():
 	if sonic_is_active == false:
 		sonic_is_active = true

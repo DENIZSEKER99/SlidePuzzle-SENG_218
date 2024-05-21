@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3qyn3n128j1b"]
+[gd_scene load_steps=21 format=3 uid="uid://d3qyn3n128j1b"]
 
 [ext_resource type="Script" path="res://scenes/Puzzle_Area.gd" id="1_amuxp"]
 [ext_resource type="Texture2D" uid="uid://b8uke6ut8f61" path="res://art/numbers/tile1.png" id="1_nhosg"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cxn214saatpbi" path="res://art/numbers/tile14.png" id="14_v453c"]
 [ext_resource type="Texture2D" uid="uid://cnrqn71ohi3tu" path="res://art/numbers/tile15.png" id="15_x6i15"]
 [ext_resource type="Texture2D" uid="uid://cqsrtivokhcti" path="res://art/numbers/empty.png" id="16_lf30e"]
+[ext_resource type="AudioStream" uid="uid://bru3p4ulcofwq" path="res://art/audio/Whip Woosh.mp3" id="18_oyhmo"]
+[ext_resource type="Texture2D" uid="uid://sduexcyn8m3x" path="res://art/Icons/Sound_on.png" id="19_t7fci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqohr"]
 size = Vector2(1000, 1000)
@@ -92,11 +94,33 @@ texture = ExtResource("15_x6i15")
 position = Vector2(875, 875)
 texture = ExtResource("16_lf30e")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 1004.0
-offset_top = 85.0
-offset_right = 1245.0
-offset_bottom = 144.0
+[node name="Shuffle" type="Button" parent="."]
+offset_left = 1001.0
+offset_top = 881.0
+offset_right = 1249.0
+offset_bottom = 936.0
 text = "Shuffle"
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_oyhmo")
+bus = &"SFX"
+
+[node name="Hard_Shuffle" type="Button" parent="."]
+offset_left = 1001.0
+offset_top = 937.0
+offset_right = 1249.0
+offset_bottom = 992.0
+text = "Hard Shuffle"
+
+[node name="Sound_Button" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1155.0
+offset_right = 1249.0
+offset_bottom = 93.0
+icon = ExtResource("19_t7fci")
+flat = true
+icon_alignment = 1
+
+[connection signal="button_down" from="Shuffle" to="." method="_on_shuffle_button_down"]
+[connection signal="button_down" from="Hard_Shuffle" to="." method="_on_hard_shuffle_button_down"]
+[connection signal="button_down" from="Sound_Button" to="." method="_on_sound_button_button_down"]
