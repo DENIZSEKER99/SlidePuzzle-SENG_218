@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0ahx5cp8lxrn"
+path="res://.godot/imported/Retro Game Loop.wav-be87fb8a1c98c10bbd23673ad8f86d3d.sample"
+
+[deps]
+
+source_file="res://art/music/Retro Game Loop.wav"
+dest_files=["res://.godot/imported/Retro Game Loop.wav-be87fb8a1c98c10bbd23673ad8f86d3d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

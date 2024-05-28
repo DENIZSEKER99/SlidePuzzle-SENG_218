@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3qyn3n128j1b"]
+[gd_scene load_steps=23 format=3 uid="uid://d3qyn3n128j1b"]
 
 [ext_resource type="Script" path="res://scenes/Puzzle_Area.gd" id="1_amuxp"]
 [ext_resource type="Texture2D" uid="uid://b8uke6ut8f61" path="res://art/numbers/tile1.png" id="1_nhosg"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://cqsrtivokhcti" path="res://art/numbers/empty.png" id="16_lf30e"]
 [ext_resource type="AudioStream" uid="uid://bru3p4ulcofwq" path="res://art/audio/Whip Woosh.mp3" id="18_oyhmo"]
 [ext_resource type="Texture2D" uid="uid://sduexcyn8m3x" path="res://art/Icons/Sound_on.png" id="19_t7fci"]
+[ext_resource type="Texture2D" uid="uid://ddt8inwyvmpwv" path="res://art/Icons/music_on.png" id="20_r3jme"]
+[ext_resource type="AudioStream" uid="uid://c0ahx5cp8lxrn" path="res://art/music/Retro Game Loop.wav" id="21_0ffke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqohr"]
 size = Vector2(1000, 1000)
@@ -96,9 +98,9 @@ texture = ExtResource("16_lf30e")
 
 [node name="Shuffle" type="Button" parent="."]
 offset_left = 1001.0
-offset_top = 881.0
+offset_top = 880.0
 offset_right = 1249.0
-offset_bottom = 936.0
+offset_bottom = 935.0
 theme_override_font_sizes/font_size = 30
 text = "Shuffle"
 
@@ -123,6 +125,67 @@ icon = ExtResource("19_t7fci")
 flat = true
 icon_alignment = 1
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Music_Button" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1066.0
+offset_right = 1160.0
+offset_bottom = 92.0
+icon = ExtResource("20_r3jme")
+flat = true
+icon_alignment = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_0ffke")
+volume_db = -5.0
+
+[node name="Current_Score_Text" type="Label" parent="."]
+offset_left = 1018.0
+offset_top = 229.0
+offset_right = 1195.0
+offset_bottom = 263.0
+theme_override_font_sizes/font_size = 24
+text = "Current Moves:"
+
+[node name="Current_Score" type="Label" parent="."]
+offset_left = 1196.0
+offset_top = 229.0
+offset_right = 1361.0
+offset_bottom = 263.0
+theme_override_font_sizes/font_size = 24
+text = "-"
+
+[node name="Highest_Score_Text" type="Label" parent="."]
+offset_left = 1018.0
+offset_top = 261.0
+offset_right = 1183.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 24
+text = "Min Moves:"
+
+[node name="Highest_Score" type="Label" parent="."]
+offset_left = 1152.0
+offset_top = 261.0
+offset_right = 1317.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 24
+text = "-"
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 1001.0
+offset_top = 812.0
+offset_right = 1249.0
+offset_bottom = 878.0
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
 [connection signal="button_down" from="Shuffle" to="." method="_on_shuffle_button_down"]
 [connection signal="button_down" from="Hard_Shuffle" to="." method="_on_hard_shuffle_button_down"]
 [connection signal="button_down" from="Sound_Button" to="." method="_on_sound_button_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Music_Button" to="." method="_on_music_button_button_down"]
+[connection signal="button_down" from="Restart" to="." method="_on_restart_button_down"]
