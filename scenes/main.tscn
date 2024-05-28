@@ -13,7 +13,7 @@ offset_top = 96.0
 offset_right = 1250.0
 offset_bottom = 169.0
 theme_override_font_sizes/font_size = 30
-text = "Numbers"
+text = "Sonic"
 
 [node name="Node2D" parent="." instance=ExtResource("1_g12u3")]
 

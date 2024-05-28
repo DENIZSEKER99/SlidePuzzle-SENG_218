@@ -10,7 +10,7 @@ var puzzle_area = preload("res://scenes/Puzzle_Area.tscn")
 func _on_sonic_button_down():
 	if sonic_is_active == false:
 		sonic_is_active = true
-		$Sonic.text="Sonic"
+		$Sonic.text="Numbers"
 		
 		$Node2D/Tile1.texture = preload("res://art/Sonic/Tile1.png")
 		$Node2D/Tile2.texture = preload("res://art/Sonic/Tile2.png")
@@ -30,7 +30,7 @@ func _on_sonic_button_down():
 		
 	else:
 		sonic_is_active = false
-		$Sonic.text="Numbers"
+		$Sonic.text="Sonic"
 		
 		$Node2D/Tile1.texture = preload("res://art/numbers/Tile1.png")
 		$Node2D/Tile2.texture = preload("res://art/numbers/Tile2.png")

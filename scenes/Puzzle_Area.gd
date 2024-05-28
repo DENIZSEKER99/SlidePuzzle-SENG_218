@@ -10,6 +10,7 @@ var music_is_on =true
 var moves = 0
 static var min_moves
 var min_moves_is_null = true
+var gameruns = true
 
 
 func _ready():
@@ -51,30 +52,32 @@ func hard_shuffle_tiles():
 			moves=0
 
 func _process(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mouse:
-		var mouse_copy = mouse
-		print(mouse.position)
-		mouse = false
-		var rows = int(mouse_copy.position.y / 250)
-		var cols = int(mouse_copy.position.x / 250)
-		check_neighbours(rows,cols)
-		if tiles == solved:
-			if min_moves_is_null:
-				min_moves = moves
-				$Highest_Score.text = str(min_moves)
-				min_moves_is_null = false
-			elif min_moves > moves:
-				min_moves = moves
-				$Highest_Score.text = str(min_moves)
-				min_moves_is_null = false
-			if sound_is_on:
-				$AudioStreamPlayer.stream=preload("res://art/audio/Small Win.mp3")
-				$AudioStreamPlayer.play()
-				pass
-			var you_win = preload("res://scenes/You win.tscn")
-			var win_instance = you_win.instantiate()
-			add_child(win_instance)
-			$Timer.start()
+	if gameruns:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mouse:
+			var mouse_copy = mouse
+			print(mouse.position)
+			mouse = false
+			var rows = int(mouse_copy.position.y / 250)
+			var cols = int(mouse_copy.position.x / 250)
+			check_neighbours(rows,cols)
+			if tiles == solved:
+				if min_moves_is_null:
+					min_moves = moves
+					$Highest_Score.text = str(min_moves)
+					min_moves_is_null = false
+				elif min_moves > moves:
+					min_moves = moves
+					$Highest_Score.text = str(min_moves)
+					min_moves_is_null = false
+				if sound_is_on:
+					$AudioStreamPlayer.stream=preload("res://art/audio/Small Win.mp3")
+					$AudioStreamPlayer.play()
+					pass
+				var you_win = preload("res://scenes/You win.tscn")
+				var win_instance = you_win.instantiate()
+				add_child(win_instance)
+				gameruns = false
+				$Timer.start()
 
 func check_neighbours(rows, cols):
 	var empty = false
@@ -145,10 +148,11 @@ func _on_sound_button_button_down():
 	pass
 
 func _on_timer_timeout():
+	gameruns = true
+	moves = 0
+	$Current_Score.text = str(moves)
 	remove_child($Win_Screen)
-	remove_child($Win_Screen1)
-	remove_child($Win_Screen2)
-	remove_child($Win_Screen3)
+	shuffle_tiles()
 	pass
 
 func _on_music_button_button_down():
@@ -162,8 +166,3 @@ func _on_music_button_button_down():
 		$MusicStreamPlayer.play()
 	pass
 
-
-func _on_restart_button_down():
-	
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	pass # Replace with function body.
